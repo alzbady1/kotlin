@@ -422,7 +422,7 @@ internal class SerializedCollection(
     private fun readResolve(): Any = collection
 
     companion object {
-        const val serialVersionUID: Long = 0L
+        private const val serialVersionUID: Long = 0L
         const val tagList: Int = 0
         const val tagSet: Int = 1
     }

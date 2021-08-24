@@ -671,6 +671,6 @@ private class SerializedMap(
     private fun readResolve(): Any = map
 
     companion object {
-        const val serialVersionUID: Long = 0L
+        private const val serialVersionUID: Long = 0L
     }
 }
