@@ -31,6 +31,10 @@ dependencies {
     compileOnly "org.jetbrains:annotations:13.0"
 }
 
+configurations.named('compileOnly') {
+    canBeResolved = true
+}
+
 if (includeJava9) {
     LibrariesCommon.configureJava9Compilation(
             project,
