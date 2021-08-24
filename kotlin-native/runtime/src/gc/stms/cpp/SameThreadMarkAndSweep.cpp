@@ -111,7 +111,7 @@ void gc::SameThreadMarkAndSweep::ThreadData::OnOOM(size_t size) noexcept {
 void gc::SameThreadMarkAndSweep::ThreadData::SafePointRegularSlowPath() noexcept {
     safePointsCounter_ = 0;
     if (konan::getTimeMicros() - timeOfLastGcUs_ >= gc_.GetCooldownThresholdUs()) {
-        RuntimeLogDebug({kTagGC}, "Attempt to GC at SafePointRegular weight=%zu", weight);
+        RuntimeLogDebug({kTagGC}, "Attempt to GC at SafePointRegular");
         timeOfLastGcUs_ = konan::getTimeMicros();
         PerformFullGC();
     }
