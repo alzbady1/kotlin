@@ -658,6 +658,7 @@ private class SerializedMap(
             throw InvalidObjectException("Unsupported flags value: $flags")
         }
         val size = input.readInt()
+        if (size < 0) throw InvalidObjectException("Illegal size value: $size.")
         map = buildMap<Any?, Any?>(size) {
             repeat(size) {
                 val key = input.readObject()

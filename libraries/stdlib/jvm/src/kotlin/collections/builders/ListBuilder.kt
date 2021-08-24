@@ -406,6 +406,7 @@ internal class SerializedCollection(
             throw InvalidObjectException("Unsupported flags value: $flags.")
         }
         val size = input.readInt()
+        if (size < 0) throw InvalidObjectException("Illegal size value: $size.")
         collection = when (tag) {
             tagList -> buildList<Any?>(size) {
                 repeat(size) { add(input.readObject()) }
