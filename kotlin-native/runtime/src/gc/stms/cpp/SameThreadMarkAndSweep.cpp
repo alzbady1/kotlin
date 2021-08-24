@@ -194,7 +194,7 @@ mm::ObjectFactory<gc::SameThreadMarkAndSweep>::FinalizerQueue gc::SameThreadMark
     // Can be unsafe, because we've stopped the world.
     auto objectsCountBefore = mm::GlobalData::Instance().objectFactory().GetSizeUnsafe();
 
-    RuntimeLogDebug({kTagGC}, "Collected root set of size=%zu in %" PRIu64 " microseconds", graySet.size(), timeRootSetUs - timeSuspendUs);
+    RuntimeLogInfo({kTagGC}, "Collected root set of size %zu of which %zu are stable refs in %" PRIu64 " microseconds", graySet.size(), stableRef, timeRootSetUs - timeSuspendUs);
     gc::Mark<MarkTraits>(std::move(graySet));
     auto timeMarkUs = konan::getTimeMicros();
     RuntimeLogDebug({kTagGC}, "Marked in %" PRIu64 " microseconds", timeMarkUs - timeRootSetUs);
