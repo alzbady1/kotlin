@@ -93,14 +93,14 @@ inline constexpr const char* kTagMM = "mm";
 
 #define RuntimeLog(level, tags, format, ...) \
     do { \
-        if (!::kotlin::compiler::enableRuntimeLogging().empty()) { \
+        if (!::kotlin::compiler::runtimeLogs().empty()) { \
             ::kotlin::logging::Log(level, tags, format, ##__VA_ARGS__); \
         } \
     } while (false)
 
 #define RuntimeVLog(level, tags, format, args) \
     do { \
-        if (!::kotlin::compiler::enableRuntimeLogging().empty()) { \
+        if (!::kotlin::compiler::runtimeLogs().empty()) { \
             ::kotlin::logging::VLog(level, tags, format, args); \
         } \
     } while (false)

@@ -348,8 +348,8 @@ class K2NativeCompilerArguments : CommonCompilerArguments() {
     )
     var binaryOptions: Array<String>? = null
 
-    @Argument(value = "-Xenable-runtime-logging", valueDescription = "<tag1=level1,tag2=level2,...>", description = "Enable logging for runtime with tags.")
-    var enableRuntimeLogging: String? = null
+    @Argument(value = "-Xruntime-logs", valueDescription = "<tag1=level1,tag2=level2,...>", description = "Enable logging for runtime with tags.")
+    var runtimeLogs: String? = null
 
     override fun configureAnalysisFlags(collector: MessageCollector, languageVersion: LanguageVersion): MutableMap<AnalysisFlag<*>, Any> =
             super.configureAnalysisFlags(collector, languageVersion).also {

@@ -27,7 +27,7 @@ using string_view = std::experimental::string_view;
 // These are defined by setRuntimeConstGlobals in IrToBitcode.kt
 extern "C" const int32_t KonanNeedDebugInfo;
 extern "C" const int32_t Kotlin_runtimeAssertsMode;
-extern "C" const char* const Kotlin_enableRuntimeLogging;
+extern "C" const char* const Kotlin_runtimeLogs;
 
 namespace kotlin {
 namespace compiler {
@@ -65,8 +65,8 @@ ALWAYS_INLINE inline RuntimeAssertsMode runtimeAssertsMode() noexcept {
 
 WorkerExceptionHandling workerExceptionHandling() noexcept;
 
-ALWAYS_INLINE inline std::string_view enableRuntimeLogging() noexcept {
-    return Kotlin_enableRuntimeLogging == nullptr ? std::string_view() : std::string_view(Kotlin_enableRuntimeLogging);
+ALWAYS_INLINE inline std::string_view runtimeLogs() noexcept {
+    return Kotlin_runtimeLogs == nullptr ? std::string_view() : std::string_view(Kotlin_runtimeLogs);
 }
 
 } // namespace compiler
