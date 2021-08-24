@@ -390,7 +390,7 @@ internal class SerializedCollection(
     constructor() : this(emptyList<Any?>(), 0) // for deserialization
 
     override fun writeExternal(output: java.io.ObjectOutput) {
-        output.writeInt(tag)
+        output.writeByte(tag)
         output.writeInt(collection.size)
         for (element in collection) {
             output.writeObject(element)
@@ -399,7 +399,7 @@ internal class SerializedCollection(
 
     @OptIn(ExperimentalStdlibApi::class)
     override fun readExternal(input: java.io.ObjectInput) {
-        val flags = input.readInt()
+        val flags = input.readByte().toInt()
         val tag = flags and 1
         val other = flags and 1.inv()
         if (other != 0) {

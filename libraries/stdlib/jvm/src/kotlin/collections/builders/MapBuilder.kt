@@ -643,7 +643,7 @@ private class SerializedMap(
     constructor() : this(emptyMap<Any?, Any?>()) // for deserialization
 
     override fun writeExternal(output: java.io.ObjectOutput) {
-        output.writeInt(0) // flags
+        output.writeByte(0) // flags
         output.writeInt(map.size)
         for (entry in map) {
             output.writeObject(entry.key)
@@ -653,7 +653,7 @@ private class SerializedMap(
 
     @OptIn(ExperimentalStdlibApi::class)
     override fun readExternal(input: java.io.ObjectInput) {
-        val flags = input.readInt()
+        val flags = input.readByte().toInt()
         if (flags != 0) {
             throw InvalidObjectException("Unsupported flags value: $flags")
         }
